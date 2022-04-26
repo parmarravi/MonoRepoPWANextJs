@@ -8,9 +8,9 @@ const port = 8000;
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
-
 app.prepare().then(() => {
   createServer(async (req, res) => {
+    const { pathname } = parsedUrl;
     if (
       pathname === "/sw.js" ||
       /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname)

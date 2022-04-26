@@ -4,13 +4,15 @@ const next = require("next");
 
 const dev = process.env.NODE_ENV !== "production";
 const hostname = "localhost";
-const port = 8000;
+const port = 8080;
 // when using middleware `hostname` and `port` must be provided below
 const app = next({ dev, hostname, port });
 const handle = app.getRequestHandler();
 
 app.prepare().then(() => {
   createServer(async (req, res) => {
+    const parsedUrl = parse(req.url, true);
+    const { pathname } = parsedUrl;
     if (
       pathname === "/sw.js" ||
       /^\/(workbox|worker|fallback)-\w+\.js$/.test(pathname)
