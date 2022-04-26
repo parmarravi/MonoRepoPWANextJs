@@ -1,0 +1,33 @@
+{
+  "name": "app_two",
+  "version": "0.1.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "appone": "echo \"\nYou are inside the root directory. \n\"",
+    "apptwo": "echo \"\nYou are inside the root directory. \n\"",
+    "prepare": "husky install",
+    "postinstall": "husky install",
+    "pretest": "./node_modules/.bin/eslint --ignore-path .gitignore . --fix",
+    "test": "",
+    "start": "echo \"\nYou are inside the root directory. \n\"",
+    "dev": "echo \"\nYou are inside the root directory. \n\"",
+    "clean": "rm -rf node_modules && rm -rf ./*/node_modules && rm -rf ./*/.next"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run pretest",
+      "post-merge": "yarn"
+    }
+  },
+  "workspaces": {
+    "packages": [
+      "shared",
+      "appone",
+      "apptwo"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^7.0.4"
+  }
+}
