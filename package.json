@@ -24,7 +24,8 @@
     "packages": [
       "shared",
       "appone",
-      "apptwo"
+      "apptwo",
+      "appthree"
     ]
   },
   "devDependencies": {
